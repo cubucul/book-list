@@ -2,12 +2,16 @@ import type { Book } from '../../types/book';
 
 type BookItemProps = {
   book: Book;
+  removeBook: (id: number) => void;
 };
 
 const BookItem = ({
-  book
+  book,
+  removeBook
 }: BookItemProps) => {
-  const { title, author } = book;
+  const { id, title, author } = book;
+
+  const onRemoveBook = () => removeBook(id);
 
   return (
     <div>
@@ -18,6 +22,7 @@ const BookItem = ({
       >Редактировать</button>
       <button
         type="button"
+        onClick={onRemoveBook}
       >Удалить</button>
     </div>
   );

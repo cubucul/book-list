@@ -16,6 +16,12 @@ const App = () => {
     });
   };
 
+  const removeBook = (id: number) => {
+    setBooks((prevBooks) => {
+      return prevBooks.filter((book) => book.id !== id);
+    });
+  };
+
   return (
     <main className="app">
       <BookForm
@@ -23,7 +29,10 @@ const App = () => {
       />
       {
         books.length ?
-          <BookList books={books} />
+          <BookList
+            books={books}
+            removeBook={removeBook}
+          />
           :
           <p>Список книг пуст.</p>
       }
