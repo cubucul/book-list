@@ -2,7 +2,7 @@
 
 .book-item {
   display: grid;
-  grid-template-columns: 1fr 160px;
+  grid-template-columns: min-content 1fr 160px;
   align-items: center;
   column-gap: 16px;
   padding-top: 16px;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../button';
 import TextField from '../text-field';
+import BookCover from '../book-cover';
 import type { Book } from '../../types/book';
 import './book-item.css';
 
@@ -15,7 +16,7 @@ const BookItem = ({
   removeBook,
   editBook
 }: BookItemProps) => {
-  const { id, title, author } = book;
+  const { id, title, author, cover } = book;
   const [isEditable, setIsEditable] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedAuthor, setEditedAuthor] = useState(author);
@@ -28,13 +29,18 @@ const BookItem = ({
     if (!isEditable) {
       setIsEditable(true);
     } else {
-      editBook({ id, title: editedTitle, author: editedAuthor });
+      editBook({
+        ...book,
+        title: editedTitle,
+        author: editedAuthor
+      });
       setIsEditable(false);
     }
   };
 
   return (
     <div className="book-item">
+      { cover && <BookCover src={cover} alt={title} /> }
       <div className="book-item__content">
         { isEditable ?
           <TextField
