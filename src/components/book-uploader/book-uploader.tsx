@@ -40,6 +40,7 @@ const BookUploader = ({
       <input
         type="file"
         onChange={onLoadCover}
+        accept="image/*"
       />
     </div>
   );
