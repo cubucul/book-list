@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { load, save } from '../../services/local-storage';
 import BookForm from '../book-form';
 import BookList from '../book-list';
 import type { Book } from '../../types/book';
@@ -33,6 +34,20 @@ const App = () => {
       });
     });
   };
+
+  useEffect(() => {
+    const persistBooks = load();
+
+    if (persistBooks) {
+      setBooks(persistBooks);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (books.length) {
+      save(books);
+    }
+  }, [books]);
 
   return (
     <main className="app">
