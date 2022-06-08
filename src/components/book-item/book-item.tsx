@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Book } from '../../types/book';
+import Button from '../button';
 import TextField from '../text-field';
 
 type BookItemProps = {
@@ -51,14 +52,8 @@ const BookItem = ({
         :
         <p>{author}</p>
       }
-      <button
-        type="button"
-        onClick={onEditBook}
-      >{editButtonText}</button>
-      <button
-        type="button"
-        onClick={onRemoveBook}
-      >Удалить</button>
+      <Button onClick={onEditBook}>{editButtonText}</Button>
+      <Button onClick={onRemoveBook}>Удалить</Button>
     </div>
   );
 };
