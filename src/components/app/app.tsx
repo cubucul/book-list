@@ -7,9 +7,20 @@ import './app.css';
 const App = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
+  const addBook = (book: Book) => {
+    setBooks((prevBooks) => {
+      return [
+        book,
+        ...prevBooks
+      ];
+    });
+  };
+
   return (
     <main className="app">
-      <BookForm />
+      <BookForm
+        addBook={addBook}
+      />
       {
         books.length ?
           <BookList books={books} />
