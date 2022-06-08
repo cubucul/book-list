@@ -4,11 +4,13 @@ import type { Book } from '../../types/book';
 type BookListProps = {
   books: Book[];
   removeBook: (id: number) => void;
+  editBook: (book: Book) => void;
 };
 
 const BookList = ({
   books,
-  removeBook
+  removeBook,
+  editBook,
 }: BookListProps) => {
   return (
     <ul>
@@ -19,6 +21,7 @@ const BookList = ({
               <BookItem
                 book={book}
                 removeBook={removeBook}
+                editBook={editBook}
               />
             </li>
           );

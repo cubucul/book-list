@@ -22,6 +22,18 @@ const App = () => {
     });
   };
 
+  const editBook = (editedBook: Book) => {
+    setBooks((prevBooks) => {
+      return prevBooks.map((book) => {
+        if (book.id === editedBook.id) {
+          return editedBook;
+        }
+
+        return book;
+      });
+    });
+  };
+
   return (
     <main className="app">
       <BookForm
@@ -32,6 +44,7 @@ const App = () => {
           <BookList
             books={books}
             removeBook={removeBook}
+            editBook={editBook}
           />
           :
           <p>Список книг пуст.</p>

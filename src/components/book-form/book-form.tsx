@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import TextField from '../text-field';
 import type { Book } from '../../types/book';
 
 type BookFormProps = {
@@ -21,22 +22,16 @@ const BookForm = ({
 
   return (
     <form onSubmit={onSubmitForm}>
-      <label>
-        <input
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          type="text"
-          placeholder="Заголовок"
-        />
-      </label>
-      <label>
-        <input
-          value={author}
-          onChange={(event) => setAuthor(event.target.value)}
-          type="text"
-          placeholder="Автор"
-        />
-      </label>
+      <TextField
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+        placeholder="Заголовок"
+      />
+      <TextField
+        value={author}
+        onChange={(event) => setAuthor(event.target.value)}
+        placeholder="Автор"
+      />
       <button type="submit">Добавить книгу</button>
     </form>
   );
