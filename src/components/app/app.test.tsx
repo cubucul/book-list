@@ -20,24 +20,6 @@ describe('App', () => {
     expect(screen.getByText(bookAuthor)).toBeInTheDocument();
   });
 
-  it('удаляет книгу', () => {
-    const booksMock: Book[] = [
-      {
-        id: 1,
-        title: 'Чистый код',
-        author: 'Роберт Мартин'
-      }
-    ];
-    jest.spyOn(localStorage, 'getItem');
-    localStorage.getItem = jest.fn().mockResolvedValue(booksMock);
-    render(<App />);
-    const deleteButton = screen.getByRole('button', {
-      name: /удалить/i
-    });
-    userEvent.click(deleteButton);
-    expect(screen.getByText(/список книг пуст/i)).toBeInTheDocument();
-  });
-
   it('редактирует книгу', () => {
     const bookTitle = 'Чистый код';
     const newBookTitle = 'Выразительный JavaScript';
@@ -63,5 +45,23 @@ describe('App', () => {
     });
     userEvent.click(saveButton);
     expect(screen.getByText(newBookTitle)).toBeInTheDocument();
+  });
+
+  it('удаляет книгу', () => {
+    const booksMock: Book[] = [
+      {
+        id: 1,
+        title: 'Чистый код',
+        author: 'Роберт Мартин'
+      }
+    ];
+    jest.spyOn(localStorage, 'getItem');
+    localStorage.getItem = jest.fn().mockResolvedValue(booksMock);
+    render(<App />);
+    const deleteButton = screen.getByRole('button', {
+      name: /удалить/i
+    });
+    userEvent.click(deleteButton);
+    expect(screen.getByText(/список книг пуст/i)).toBeInTheDocument();
   });
 });
