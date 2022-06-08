@@ -1,9 +1,10 @@
-import { FormEvent, useState, ChangeEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import TextField from '../text-field';
 import Button from '../button';
+import BookCover from '../book-cover';
+import BookUploader from '../book-uploader';
 import type { Book } from '../../types/book';
 import './book-form.css';
-import BookCover from '../book-cover';
 
 type BookFormProps = {
   addBook: (book: Book) => void;
@@ -15,32 +16,6 @@ const BookForm = ({
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [cover, setCover] = useState('');
-
-  const getBase64 = (file: Blob) => {
-    return new Promise((resolve) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        console.log(error);
-      };
-    });
-  };
-
-  const onLoadCover = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files) {
-      return;
-    }
-
-    const file = event.target.files[0];
-    const base64 = await getBase64(file);
-
-    if (base64) {
-      setCover(base64 as string);
-    }
-  };
 
   const onSubmitForm = (event: FormEvent) => {
     event.preventDefault();
@@ -56,10 +31,7 @@ const BookForm = ({
       className="book-form"
       onSubmit={onSubmitForm}
     >
-      <input
-        type="file"
-        onChange={onLoadCover}
-      />
+      <BookUploader uploadCover={setCover} />
       {
         cover &&
           <BookCover src={cover} alt={title} />

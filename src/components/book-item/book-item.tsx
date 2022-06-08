@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../button';
 import TextField from '../text-field';
 import BookCover from '../book-cover';
+import BookUploader from '../book-uploader';
 import type { Book } from '../../types/book';
 import './book-item.css';
 
@@ -20,6 +21,7 @@ const BookItem = ({
   const [isEditable, setIsEditable] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedAuthor, setEditedAuthor] = useState(author);
+  const [editedCover, setEditedCover] = useState(cover);
 
   const editButtonText = isEditable ? 'Сохранить' : 'Редактировать';
 
@@ -32,7 +34,8 @@ const BookItem = ({
       editBook({
         ...book,
         title: editedTitle,
-        author: editedAuthor
+        author: editedAuthor,
+        cover: editedCover
       });
       setIsEditable(false);
     }
@@ -40,7 +43,10 @@ const BookItem = ({
 
   return (
     <div className="book-item">
-      <BookCover src={cover} alt={title} />
+      <BookCover
+        src={isEditable ? editedCover : cover}
+        alt={title}
+      />
       <div className="book-item__content">
         { isEditable ?
           <TextField
@@ -59,6 +65,10 @@ const BookItem = ({
           />
           :
           <p className="book-item__author">{author}</p>
+        }
+        {
+          isEditable &&
+            <BookUploader uploadCover={setEditedCover} />
         }
       </div>
       <div className="book-item__controls">
