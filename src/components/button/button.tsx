@@ -5,12 +5,14 @@ type ButtonProps = {
   children: ReactNode;
   theme?: 'green' | 'red' | 'blue';
   type?: 'button' | 'submit';
+  disabled?: boolean;
   onClick?: () => void;
 };
 
 const Button = ({
   type = 'button',
   theme = 'green',
+  disabled = false,
   children,
   onClick
 }: ButtonProps) => {
@@ -21,6 +23,7 @@ const Button = ({
       className={buttonClass}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >{children}</button>
   );
 };

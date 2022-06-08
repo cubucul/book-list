@@ -56,7 +56,11 @@ const BookItem = ({
         }
       </div>
       <div className="book-item__controls">
-        <Button theme="blue" onClick={onEditBook}>{editButtonText}</Button>
+        <Button
+          theme="blue"
+          onClick={onEditBook}
+          disabled={editedTitle === '' || editedAuthor === ''}
+        >{editButtonText}</Button>
         <Button theme="red" onClick={onRemoveBook}>Удалить</Button>
       </div>
     </div>

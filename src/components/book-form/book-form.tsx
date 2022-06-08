@@ -39,7 +39,10 @@ const BookForm = ({
         placeholder="Автор"
         label="Автор книги"
       />
-      <Button type="submit">Добавить книгу</Button>
+      <Button
+        type="submit"
+        disabled={title === '' || author === ''}
+      >Добавить книгу</Button>
     </form>
   );
 };

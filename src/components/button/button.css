@@ -60,3 +60,11 @@
 .button--theme--blue:focus {
   background-color: var(--blue-500);
 }
+
+/* Disabled */
+
+.button:disabled,
+.button:hover:disabled {
+  background-color: var(--gray-300);
+  cursor: not-allowed;
+}
