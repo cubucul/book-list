@@ -14,7 +14,7 @@ const BookForm = ({
   const onSubmitForm = (event: FormEvent) => {
     event.preventDefault();
 
-    addBook({ title, author });
+    addBook({ id: Date.now(), title, author });
     setTitle('');
     setAuthor('');
   };

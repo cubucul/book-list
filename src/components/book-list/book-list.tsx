@@ -11,9 +11,9 @@ const BookList = ({
   return (
     <ul>
       {
-        books.map((book, index) => {
+        books.map((book) => {
           return (
-            <li key={`${index}-${book.title}`}>
+            <li key={book.id}>
               <BookItem book={book} />
             </li>
           );
