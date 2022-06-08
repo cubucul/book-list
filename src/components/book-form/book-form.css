@@ -2,6 +2,14 @@
 
 .book-form {
   display: grid;
+  grid-template-columns: 1fr min-content;
+  column-gap: 16px;
+}
+
+/* Content */
+
+.book-form__content {
+  display: grid;
   row-gap: 8px;
   justify-content: start;
 }

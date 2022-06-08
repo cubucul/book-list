@@ -31,27 +31,31 @@ const BookForm = ({
       className="book-form"
       onSubmit={onSubmitForm}
     >
-      <BookUploader uploadCover={setCover} />
-      {
-        cover &&
-          <BookCover src={cover} alt={title} />
-      }
-      <TextField
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-        placeholder="Заголовок"
-        label="Заголовок книги"
-      />
-      <TextField
-        value={author}
-        onChange={(event) => setAuthor(event.target.value)}
-        placeholder="Автор"
-        label="Автор книги"
-      />
-      <Button
-        type="submit"
-        disabled={title === '' || author === ''}
-      >Добавить книгу</Button>
+      <div className="book-form__content">
+        <BookUploader uploadCover={setCover} />
+        <TextField
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Заголовок"
+          label="Заголовок книги"
+        />
+        <TextField
+          value={author}
+          onChange={(event) => setAuthor(event.target.value)}
+          placeholder="Автор"
+          label="Автор книги"
+        />
+        <Button
+          type="submit"
+          disabled={title === '' || author === ''}
+        >Добавить книгу</Button>
+      </div>
+      <div>
+        {
+          cover &&
+            <BookCover src={cover} alt={title} />
+        }
+      </div>
     </form>
   );
 };
