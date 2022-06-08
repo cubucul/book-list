@@ -1,8 +1,18 @@
-const BookItem = () => {
+import type { Book } from '../../types/book';
+
+type BookItemProps = {
+  book: Book;
+};
+
+const BookItem = ({
+  book
+}: BookItemProps) => {
+  const { title, author } = book;
+
   return (
     <div>
-      <h2>Заголовок</h2>
-      <p>Автор</p>
+      <h2>{title}</h2>
+      <p>{author}</p>
       <button
         type="button"
       >Редактировать</button>
