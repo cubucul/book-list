@@ -1,7 +1,7 @@
 import './book-cover.css';
 
 type BookCoverProps = {
-  src: string;
+  src: string | undefined;
   alt: string;
 };
 

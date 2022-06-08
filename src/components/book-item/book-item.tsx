@@ -40,7 +40,7 @@ const BookItem = ({
 
   return (
     <div className="book-item">
-      { cover && <BookCover src={cover} alt={title} /> }
+      <BookCover src={cover} alt={title} />
       <div className="book-item__content">
         { isEditable ?
           <TextField
