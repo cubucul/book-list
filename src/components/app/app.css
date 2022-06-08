@@ -6,3 +6,10 @@
   margin-left: auto;
   padding: 40px 16px;
 }
+
+/* Form */
+
+.app__form {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-100);
+}

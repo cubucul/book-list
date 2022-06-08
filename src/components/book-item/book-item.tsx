@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import type { Book } from '../../types/book';
 import Button from '../button';
 import TextField from '../text-field';
+import type { Book } from '../../types/book';
+import './book-item.css';
 
 type BookItemProps = {
   book: Book;
@@ -33,27 +34,31 @@ const BookItem = ({
   };
 
   return (
-    <div>
-      { isEditable ?
-        <TextField
-          value={editedTitle}
-          onChange={(event) => setEditedTitle(event.target.value)}
-          placeholder="Заголовок"
-        />
-        :
-        <h2>{title}</h2>
-      }
-      { isEditable ?
-        <TextField
-          value={editedAuthor}
-          onChange={(event) => setEditedAuthor(event.target.value)}
-          placeholder="Автор"
-        />
-        :
-        <p>{author}</p>
-      }
-      <Button onClick={onEditBook}>{editButtonText}</Button>
-      <Button onClick={onRemoveBook}>Удалить</Button>
+    <div className="book-item">
+      <div className="book-item__content">
+        { isEditable ?
+          <TextField
+            value={editedTitle}
+            onChange={(event) => setEditedTitle(event.target.value)}
+            placeholder="Заголовок"
+          />
+          :
+          <h2 className="book-item__title">{title}</h2>
+        }
+        { isEditable ?
+          <TextField
+            value={editedAuthor}
+            onChange={(event) => setEditedAuthor(event.target.value)}
+            placeholder="Автор"
+          />
+          :
+          <p className="book-item__author">{author}</p>
+        }
+      </div>
+      <div className="book-item__controls">
+        <Button theme="blue" onClick={onEditBook}>{editButtonText}</Button>
+        <Button theme="red" onClick={onRemoveBook}>Удалить</Button>
+      </div>
     </div>
   );
 };

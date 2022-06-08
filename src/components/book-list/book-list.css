@@ -1,0 +1,13 @@
+/* Book List */
+
+.book-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Item */
+
+.book-list__item:not(:last-child) {
+  border-bottom: 1px solid var(--gray-100);
+}

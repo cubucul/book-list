@@ -1,0 +1,7 @@
+/* Book Form */
+
+.book-form {
+  display: grid;
+  row-gap: 8px;
+  justify-content: start;
+}

@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import './text-field.css';
 
 type TextFieldProps = {
   value: string;
@@ -12,8 +13,9 @@ const TextField = ({
   onChange
 }: TextFieldProps) => {
   return (
-    <label>
+    <label className="text-field">
       <input
+        className="text-field__input"
         value={value}
         onChange={onChange}
         type="text"

@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import TextField from '../text-field';
 import Button from '../button';
 import type { Book } from '../../types/book';
+import './book-form.css';
 
 type BookFormProps = {
   addBook: (book: Book) => void;
@@ -22,7 +23,10 @@ const BookForm = ({
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <form
+      className="book-form"
+      onSubmit={onSubmitForm}
+    >
       <TextField
         value={title}
         onChange={(event) => setTitle(event.target.value)}

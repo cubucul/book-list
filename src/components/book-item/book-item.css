@@ -1,0 +1,36 @@
+/* Book Item */
+
+.book-item {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  align-items: center;
+  column-gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Content */
+
+.book-item__content {
+  display: grid;
+  row-gap: 8px;
+}
+
+/* Title */
+
+.book-item__title {
+  margin: 0;
+}
+
+/* Author */
+
+.book-item__author {
+  margin: 0;
+}
+
+/* Controls */
+
+.book-item__controls {
+  display: grid;
+  row-gap: 8px;
+}

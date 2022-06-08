@@ -51,9 +51,11 @@ const App = () => {
 
   return (
     <main className="app">
-      <BookForm
-        addBook={addBook}
-      />
+      <div className="app__form">
+        <BookForm
+          addBook={addBook}
+        />
+      </div>
       {
         books.length ?
           <BookList

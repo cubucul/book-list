@@ -1,5 +1,6 @@
 import BookItem from '../book-item';
 import type { Book } from '../../types/book';
+import './book-list.css';
 
 type BookListProps = {
   books: Book[];
@@ -13,11 +14,11 @@ const BookList = ({
   editBook,
 }: BookListProps) => {
   return (
-    <ul>
+    <ul className="book-list">
       {
         books.map((book) => {
           return (
-            <li key={book.id}>
+            <li key={book.id} className="book-list__item">
               <BookItem
                 book={book}
                 removeBook={removeBook}
