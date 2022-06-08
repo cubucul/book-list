@@ -31,11 +31,13 @@ const BookForm = ({
         value={title}
         onChange={(event) => setTitle(event.target.value)}
         placeholder="Заголовок"
+        label="Заголовок книги"
       />
       <TextField
         value={author}
         onChange={(event) => setAuthor(event.target.value)}
         placeholder="Автор"
+        label="Автор книги"
       />
       <Button type="submit">Добавить книгу</Button>
     </form>
