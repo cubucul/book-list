@@ -6,7 +6,11 @@ import type { Book } from '../../types/book';
 import './app.css';
 
 const App = () => {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<Book[]>(() => {
+    const persistBooks = load();
+
+    return persistBooks || [];
+  });
 
   const addBook = (book: Book) => {
     setBooks((prevBooks) => {
@@ -36,17 +40,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const persistBooks = load();
-
-    if (persistBooks) {
-      setBooks(persistBooks);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (books.length) {
-      save(books);
-    }
+    save(books);
   }, [books]);
 
   return (
